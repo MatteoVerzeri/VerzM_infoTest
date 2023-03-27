@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VerzM_infoTest
 {
-    internal class VerzM_Lavoratore : VerzM_Candidato, IEquatable<VerzM_Lavoratore>
+    internal class VerzM_Lavoratore : VerzM_Candidato, IEquatable<VerzM_Lavoratore>, IComparable<VerzM_Lavoratore>
     {
         private int VerzM_esperienze;
         public int VerzM_Esperienze { get { return VerzM_esperienze; } set { if (value <= 5 && value >=0) { VerzM_esperienze = value; } } }
@@ -46,7 +46,7 @@ namespace VerzM_infoTest
             else
                 return false;
         }
-        public virtual int CompareTo(VerzM_Candidato candidato)
+        public virtual int CompareTo(VerzM_Lavoratore candidato)
         {
             if (this.punteggio() == candidato.punteggio())
             {

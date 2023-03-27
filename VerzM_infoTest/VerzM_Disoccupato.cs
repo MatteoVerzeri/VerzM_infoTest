@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VerzM_infoTest
 {
-    public class VerzM_Disoccupato : VerzM_Candidato, IEquatable<VerzM_Disoccupato>
+    public class VerzM_Disoccupato : VerzM_Candidato, IEquatable<VerzM_Disoccupato>, IComparable<VerzM_Disoccupato>
     {
         private int VerzM_voto;
         private bool VerzM_lode;
@@ -69,7 +69,7 @@ namespace VerzM_infoTest
             else
                 return false;
         }
-        public virtual int CompareTo(VerzM_Candidato candidato)
+        public virtual int CompareTo(VerzM_Disoccupato candidato)
         {
             if (this.punteggio() == candidato.punteggio())
             {
