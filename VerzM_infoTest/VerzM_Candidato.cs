@@ -15,12 +15,12 @@ namespace VerzM_infoTest
         public VerzM_Candidato()
         {
             VerzM_Matricola = 0;
-            VerzM_Nome = "";
+            VerzM_Nome = null;
         }
         public VerzM_Candidato(int VerzM_matricola)
         {
             VerzM_Matricola = VerzM_matricola;
-            VerzM_Nome = "";
+            VerzM_Nome = null;
         }
         public VerzM_Candidato(string VerzM_nome)
         {
