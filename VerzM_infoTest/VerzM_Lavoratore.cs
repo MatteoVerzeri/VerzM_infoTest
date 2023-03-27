@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VerzM_infoTest
 {
-    internal class VerzM_Lavoratore : VerzM_Candidato
+    internal class VerzM_Lavoratore : VerzM_Candidato, IEquatable<VerzM_Lavoratore>
     {
         private int VerzM_esperienze;
         public int VerzM_Esperienze { get { return VerzM_esperienze; } set { if (value <= 5 && value >=0) { VerzM_esperienze = value; } } }
@@ -33,6 +33,38 @@ namespace VerzM_infoTest
                 return false;
             }
                 
+        }
+        public override string ToString()
+        {
+            string a = VerzM_esperienze.ToString();
+            return a;
+        }
+        public bool Equals(VerzM_Lavoratore candidato)
+        {
+            if (base.Equals(candidato) == true && candidato.VerzM_esperienze == this.VerzM_esperienze)
+                return true;
+            else
+                return false;
+        }
+        public virtual int CompareTo(VerzM_Candidato candidato)
+        {
+            if (this.punteggio() == candidato.punteggio())
+            {
+                return 0;
+            }
+            else if (this.punteggio() > candidato.punteggio())
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

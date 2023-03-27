@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VerzM_infoTest
 {
-    public class VerzM_Disoccupato : VerzM_Candidato
+    public class VerzM_Disoccupato : VerzM_Candidato, IEquatable<VerzM_Disoccupato>
     {
         private int VerzM_voto;
         private bool VerzM_lode;
@@ -56,6 +56,38 @@ namespace VerzM_infoTest
             {
                 return false;
             }
+        }
+        public override string ToString()
+        {
+            string a = VerzM_voto.ToString() + " " + VerzM_lode.ToString();
+            return a;
+        }
+        public bool Equals(VerzM_Disoccupato candidato)
+        {
+            if (base.Equals(candidato) == true && candidato.punteggio() == this.punteggio())
+                return true;
+            else
+                return false;
+        }
+        public virtual int CompareTo(VerzM_Candidato candidato)
+        {
+            if (this.punteggio() == candidato.punteggio())
+            {
+                return 0;
+            }
+            else if (this.punteggio() > candidato.punteggio())
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VerzM_infoTest
 {
-    public abstract class VerzM_Candidato
+    public abstract class VerzM_Candidato : IEquatable<VerzM_Candidato>
     {
         private int VerzM_matricola;
         private string VerzM_nome;
@@ -34,5 +34,26 @@ namespace VerzM_infoTest
         }
         public abstract bool isIdoneo();
         public abstract int punteggio();
+        public override string ToString()
+        {
+            string a = VerzM_matricola.ToString() + " " + VerzM_nome;
+            return a;
+        }
+        public virtual bool Equals(VerzM_Candidato candidato)
+        {
+            if (candidato == null)
+            {
+                return false;
+            }
+            if (candidato.VerzM_nome == this.VerzM_nome && candidato.VerzM_matricola == this.VerzM_matricola)
+            {
+                return true;
+            }
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return (VerzM_matricola, VerzM_nome).GetHashCode();
+        }
     }
 }
